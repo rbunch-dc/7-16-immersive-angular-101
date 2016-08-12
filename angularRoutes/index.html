@@ -7,12 +7,33 @@
 	</title>
 
 	<style type="text/css" media="screen">
+	body{
+		position: relative;
+	}
 		.page{
 			margin-top: 50px;
+			background: red;
+			width: 100%;
 		}
+
+	.slide-animate.ng-enter, .slide-animate.ng-leave{
+		transition: all linear 18s;
+	}
+
+	.slide-animate.ng-enter.ng-enter-active{
+		position: absolute;
+		left:1000px;
+	}
+
+	.slide-animate.ng-enter{
+		left: 0;
+	}
+
+
+
 	</style>
 
-	<!-- Include Bootstrap -->
+	<!-- Include Bootst0-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
@@ -30,8 +51,14 @@
 	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
 	<!-- Include animate module so we can animate stuff -->
 	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
-	<!-- include our custom JS script which does everything (right now) -->
+	<!-- include our JS file which does all the app work -->
 	<script type="text/javascript" src="js/navModule.js"></script>
+	<!-- Include our controller specific to the contact view -->
+	<script type="text/javascript" src="js/contactController.js"></script>
+	<!-- Include our controller specific to the location view -->
+	<script type="text/javascript" src="js/locationsController.js"></script>
+	<!-- Include our controller specific to the about view -->
+	<script type="text/javascript" src="js/aboutController.js"></script>
 
 
 </head>
@@ -68,11 +95,13 @@
 	</div>
 	</nav>
 
-<!-- Make a div for our ng-view to use. This will be empty HTML.
+	<!-- Make a div for our ng-view to use. This will be empty HTML.
 	We can then populate it with the routes module! With stock
 	routes, you can only have ONE ng-view on your page. UI-views
 	is a different story -->
-	<div class="page" ng-view></div>
+	<div class="page slide-animate" ng-view></div>
+	{{message}}
+
 
 </body>
 </html>
