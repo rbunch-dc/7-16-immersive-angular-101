@@ -1,4 +1,4 @@
-var navRoutes = angular.module('navRoutes', ['ngRoute']);
+var navRoutes = angular.module('navRoutes', ['ngRoute', 'ngAnimate']);
 
 navRoutes.controller('navController', function($scope, $http){
 	$scope.message = "I'm working!!";

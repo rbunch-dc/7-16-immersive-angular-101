@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- We give our app a name so Angular can take over -->
 <html ng-app="navRoutes">
 <head>
 	<title>
@@ -8,28 +9,36 @@
 	<style type="text/css" media="screen">
 		.page{
 			margin-top: 50px;
-		}	
+		}
 	</style>
 
-	<!-- Latest compiled and minified CSS -->
+	<!-- Include Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
-	<!-- Optional theme -->
+	<!-- Bootstrap theme (no clue what it does) -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+	<!-- Include jQuery because bootstrap.js needs it! -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
+	<!-- Include Bootstrap.js so our menu collapses/expands -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+	<!-- Include angular. Duh. The below files demand it! -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Include the routes module so we can use ng-view -->
 	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+	<!-- Include animate module so we can animate stuff -->
+	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
+	<!-- include our custom JS script which does everything (right now) -->
 	<script type="text/javascript" src="js/navModule.js"></script>
 
 
 </head>
+<!-- Give our controller a name so we can target it -->
 <body ng-controller="navController">
 
+	<!-- Bootstrap menu -->
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#theMenu">
@@ -59,6 +68,10 @@
 	</div>
 	</nav>
 
+<!-- Make a div for our ng-view to use. This will be empty HTML.
+	We can then populate it with the routes module! With stock
+	routes, you can only have ONE ng-view on your page. UI-views
+	is a different story -->
 	<div class="page" ng-view></div>
 
 </body>
