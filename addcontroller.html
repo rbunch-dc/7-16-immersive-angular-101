@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+	<title></title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller('myController', function($scope){
+			$scope.firstName = "Rob"
+
+			// $scope.$watch('lastName', function(newValue, oldValue){
+			// 	console.log("The old value was " + oldValue + ".The new value is " + newValue);
+			// });
+
+			$scope.students = ['Summer', 'JT', 'Jackson', 'Shirlette'];
+
+		});
+	</script>
+
+</head>
+<body ng-controller="myController">
+
+	First Name:<input type="text" ng-model="firstName">
+	Last Name:<input type="text" ng-model="lastName">
+
+	<div>
+		Welcome to my page, {{firstName}} {{lastName}}
+	</div>
+
+	{{students}}
+	<li ng-repeat="buggsAndDaffy in students track by $index">
+		{{$index}}: {{buggsAndDaffy}}
+	</li>
+
+	<div id="studentsDiv"></div>
+
+<script type="text/javascript">
+	
+var newHTML = ""
+var students = ['Summer', 'JT', 'Jackson', 'Shirlette'];
+for(var i = 0; i< students.length; i++){
+	newHTML += "<li>"+students[i]+"</li>";
+}
+document.getElementById('studentsDiv').innerHTML = newHTML
+
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="cashRegisterApp">
+<head>
+	<title>
+		App that determines change!
+	</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<script type="text/javascript" src="register.js"></script>
+
+</head>
+<body ng-controller="cashRegisterController">
+
+	<!-- Overall container -->
+	<div class="container-fluid">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<h1>Cash Register</h1>
+				<hr />
+				<div ng-show="total">
+					Total: {{total | currency}}
+				</div>
+				<div ng-show="paid">
+					Amount Paid: {{paid | currency}}
+				</div>
+				<div ng-show="totalDue">
+					Change Due: {{totalDue}}
+				</div>
+			</div>
+
+			<div class="panel panel-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-md-3">
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input class="input-lg form-control" type="text" ng-model="total">
+							</div>
+							<span class="help-block help-block-label">Total Amount</span>
+						</div>
+
+						<div class="col-md-2">
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input class="input-lg form-control" type="text" ng-model="paid">
+							</div>
+							<span class="help-block help-block-label">Amount Paid</span>
+						</div>
+
+						<div class="col-md-2">
+							<button class="btn btn-lg btn-primary" ng-click="makeChange()">Make Change</button>
+						</div>
+
+					</div>
+				</form>
+
+				<div class="well">
+					<!-- Put our HTML in here! -->
+					<table class="table table-striped">
+						<tbody>
+							<span ng-show="totalDue">Amount of coins: {{changeArray.length}}</span>
+							<div ng-repeat="item in coinAmount track by $index">
+								{{item}}
+							</div>
+							<hr />
+							<tr>
+								<td>Coin Type</td>
+								<td>Coin Image</td>
+								<td>Coin Value</td>
+							</tr>
+
+							<tr ng-repeat="change in changeArray track by $index">
+								<td>{{change.name}}</td>
+								<td><img ng-src="{{change.image}}"></td>
+								<td>{{change.value | currency}}</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

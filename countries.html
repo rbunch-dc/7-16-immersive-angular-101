@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="countriesApp">
+<head>
+	<title>
+		
+	</title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<script type="text/javascript" src="countries.js"></script>
+
+
+</head>
+<body ng-controller="countriesController">
+
+	<input type="text" ng-model="queryString">
+
+
+	<table>
+
+		<thead>
+			<tr>
+				<th ng-click="orderField='img'; reverse = !reverse;">Flag</th>
+				<th ng-click="orderField='name'; reverse = !reverse;">Country Name</th>
+				<th ng-click="orderField='goldMedals'"><img src="https://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-small-gold_2x.png"></th>
+				<th><img src="https://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-small-gold_2x.png"></th>
+				<th><img src="https://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-small-gold_2x.png"></th>
+				<th><img src="https://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-small-gold_2x.png"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="country in countries | filter:queryString | orderBy:[orderField]:reverse">
+				<td><img ng-src="{{country.img}}"></td>
+				<td>{{country.name}}</td>
+				<td>{{country.goldMedals}}</td>
+				<td>{{country.silverMedals}}</td>
+				<td>{{country.bronzeMedals}}</td>
+				<td>{{country.bronzeMedals + country.silverMedals + country.goldMedals}}</td>
+
+			</tr>
+		</tbody>
+
+	</table>
+
+</body>
+</html>

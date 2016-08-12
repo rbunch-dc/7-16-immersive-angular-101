@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<script type="text/javascript">
+		
+	var myApp = angular.module('myApp', []);
+	myApp.controller('myCntl', function($scope){
+
+		$scope.updateCharLength = function(){
+			console.log('test');
+			$scope.lengthOfName = $scope.name.length;
+		}
+
+		// $scope.$watch('name4',function(newValue, oldValue){
+		// 	$scope.name4Length = newValue.length;
+		// })
+
+	});
+
+
+	</script>
+
+</head>
+<body ng-controller="myCntl">
+
+	<input type="text" ng-model="name3">
+	<div ng-show="name3" class="">Hello, {{name3}}. You have {{name.length}} characters in your name.</div>
+
+	<input type="text" ng-change="change=change+1" ng-model="name2">
+
+	<div class="">Hello, {{name2}}. You have {{change}} characters in your name.</div>
+
+	<input type="text" ng-keyup="updateCharLength()" ng-model="name">
+
+	<input type="text" ng-model="name">
+
+	<div class="">Hello, {{name}}. You have {{name.length}} characters in your name.</div>
+	<!-- $scope.name ====== string ======= an array -->
+
+	<div class="">Hello, {{name}}. You have {{lengthOfName}} characters in your name.</div>
+
+	<input type="text" ng-model="name4">
+	<div ng-show="name4" class="">Hello, {{name4}}. You have {{name4Length}} characters in your name.</div>
+
+	<input type="text" ng-model="name5">
+	<div>Hello, {{name5}}. You have <span ng-repeat="char in name5 track by $index"></span> in your name.
+
+
+</body>
+</html>

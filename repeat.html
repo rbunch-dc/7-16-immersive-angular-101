@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="repeatApp">
+<head>
+	<title></title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<script type="text/javascript" src="repeat.js"></script>
+
+</head>
+<body ng-controller="repeatController">
+
+	<li ng-repeat="student in class track by $index">
+		<a href="" ng-click=removeStudent($index)>{{student}}</a>
+	</li>
+
+	<form ng-submit="addStudent()">
+		<input type="text" ng-model="newStudent">
+		<div>Enter new Student's name</div>
+		<button type="submit">Click to add</button>
+	</form>
+
+</body>
+</html>
